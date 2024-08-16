@@ -1,4 +1,4 @@
-module github.com/openimsdk/protocol
+module ggithub.com/KyleYe/open-im-protocol
 
 go 1.18
 

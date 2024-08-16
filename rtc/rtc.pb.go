@@ -8,7 +8,7 @@ package rtc
 
 import (
 	context "context"
-	sdkws "ggithub.com/KyleYe/open-im-protocol/sdkws"
+	sdkws "github.com/KyleYe/open-im-protocol/sdkws"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"

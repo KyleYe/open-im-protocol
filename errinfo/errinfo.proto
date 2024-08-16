@@ -16,7 +16,7 @@ syntax = "proto3";
 
 package openim.protobuf;
 
-option go_package = "ggithub.com/KyleYe/open-im-protocol/errinfo";
+option go_package = "github.com/KyleYe/open-im-protocol/errinfo";
 
 message ErrorInfo {
   string path = 1;

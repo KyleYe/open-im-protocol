@@ -18,7 +18,7 @@ package openim.user;
 import "sdkws/sdkws.proto";
 import "conversation/conversation.proto";
 import "wrapperspb/wrapperspb.proto";
-option go_package = "ggithub.com/KyleYe/open-im-protocol/user";
+option go_package = "github.com/KyleYe/open-im-protocol/user";
 
 message getAllUserIDReq{
   sdkws.RequestPagination pagination = 1;

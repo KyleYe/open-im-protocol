@@ -17,7 +17,7 @@ package auth
 import (
 	"errors"
 
-	"ggithub.com/KyleYe/open-im-protocol/constant"
+	"github.com/KyleYe/open-im-protocol/constant"
 )
 
 func (x *UserTokenReq) Check() error {

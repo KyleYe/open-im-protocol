@@ -17,7 +17,7 @@ package user
 import (
 	"errors"
 
-	"ggithub.com/KyleYe/open-im-protocol/constant"
+	"github.com/KyleYe/open-im-protocol/constant"
 )
 
 func (x *GetAllUserIDReq) Check() error {

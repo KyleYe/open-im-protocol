@@ -17,7 +17,8 @@ package sdkws
 import (
 	"errors"
 	"fmt"
-	"github.com/openimsdk/protocol/constant"
+
+	"github.com/KyleYe/open-im-protocol/constant"
 )
 
 func (x *MsgData) Check() error {

@@ -82,6 +82,9 @@ message UserInfo{
   int64 createTime = 5;
   int32 appMangerLevel = 6;
   int32 globalRecvMsgOpt = 7;
+  double latitude = 8;
+  double longitude = 9;
+  int64 updateTime = 10;
 }
 
 message UserInfoWithEx{

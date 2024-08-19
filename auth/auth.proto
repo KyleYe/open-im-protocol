@@ -16,6 +16,16 @@ syntax = "proto3";
 package openim.auth;
 option go_package = "github.com/KyleYe/open-im-protocol/auth";
 
+message uMengAutoLoginReq {
+  string secret = 1;
+  int32  platformID = 2;
+  string token = 3;
+}
+
+message uMengAutoLoginResp {
+  string token = 2;
+  int64  expireTimeSeconds = 3;
+}
 
 message userTokenReq {
   string secret = 1;

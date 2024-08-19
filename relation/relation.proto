@@ -275,6 +275,18 @@ message notificationUserInfoUpdateReq {
 message notificationUserInfoUpdateResp {
 }
 
+message getNearbyFriendsReq{
+  sdkws.RequestPagination pagination = 1;
+  string userID = 2;
+  double latitude = 3;
+  double longitude = 4;
+}
+
+message getNearbyFriendsResp{
+  repeated sdkws.FriendInfo friendsInfo = 1;
+  int32 total = 2;
+}
+
 service friend {
   // Friend request
   rpc applyToAddFriend(applyToAddFriendReq) returns (applyToAddFriendResp);
@@ -324,4 +336,7 @@ service friend {
   rpc getFullFriendUserIDs(getFullFriendUserIDsReq) returns (getFullFriendUserIDsResp);
 
   rpc NotificationUserInfoUpdate(notificationUserInfoUpdateReq)returns(notificationUserInfoUpdateResp);
+
+  // 获取附近好友信息 
+  rpc getNearbyFriends(getNearbyFriendsReq) returns (getNearbyFriendsResp);
 }

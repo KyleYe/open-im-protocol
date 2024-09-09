@@ -287,6 +287,135 @@ message getNearbyFriendsResp{
   int32 total = 2;
 }
 
+message CommonResp{
+  int32  errCode = 1;
+  string errMsg = 2;
+}
+
+message MomentUser {
+  string userID = 1;
+  string userName = 2;
+}
+
+message Comment {
+  string userID = 1;
+  string userName = 2;
+  string faceURL = 3;
+  string replyUserID = 4;
+  string replyUserName = 5;
+  string contentID = 6;
+  string content = 7;
+  int32  createTime = 8;
+}
+
+message PermissionGroup {
+  string groupName = 1;
+  string groupID = 2;
+}
+
+message Moment {
+  string MomentID = 1;
+  string userID = 2;
+  string userName = 3;
+  string faceURL = 4;
+  string content = 5;
+  repeated MomentUser likeUserList = 6;
+  repeated Comment comments = 7;
+  int32 permission = 8;
+  repeated MomentUser permissionUserList = 9;
+  repeated PermissionGroup permissionGroupList = 10;
+  repeated MomentUser atUserList = 11;
+  int32 createTime = 12;
+}
+
+message CreateOneMomentReq {
+  Moment Moment = 1;
+  string operationID = 2;
+}
+
+message CreateOneMomentResp {
+  CommonResp commonResp = 1;
+}
+
+message DeleteOneMomentReq {
+  string MomentID = 1;
+  string userID = 2;
+  string operationID = 3;
+}
+
+message DeleteOneMomentResp {
+  CommonResp commonResp = 1;
+}
+
+message LikeOneMomentReq {
+  string userID = 1;
+  string MomentID = 2;
+  string operationID = 3;
+}
+
+message LikeOneMomentResp {
+  CommonResp commonResp = 1;
+}
+
+message CommentOneMomentReq {
+  string userID = 1;
+  string MomentID = 2;
+  string replyUserID = 3;
+  string content = 4;
+  string operationID = 5;
+}
+
+message CommentOneMomentResp {
+  CommonResp commonResp = 1;
+}
+
+message DeleteCommentReq {
+  string MomentID = 1;
+  string contentID = 2;
+  string opUserID = 3;
+  string operationID = 4;
+}
+
+message DeleteCommentResp {
+  CommonResp commonResp = 1;
+}
+
+message GetMomentByIDReq {
+  string MomentID = 1;
+  string opUserID = 2;
+  string operationID = 3;
+}
+
+message GetMomentByIDResp {
+  CommonResp commonResp = 1;
+  Moment Moment = 2;
+}
+
+message GetUserMomentsReq {
+  string userID = 1;
+  string opUserID = 2;
+  sdkws.RequestPagination Pagination = 3;
+  string operationID = 4;
+}
+
+message GetUserMomentsResp {
+  CommonResp commonResp = 1;
+  repeated Moment Moments = 2;
+  sdkws.RequestPagination Pagination = 3;
+}
+
+message GetUserFriendMomentsReq {
+  string userID = 1;
+  sdkws.RequestPagination Pagination = 2;
+  string operationID = 3;
+}
+
+message GetUserFriendMomentsResp {
+  CommonResp commonResp = 1;
+  repeated Moment Moments = 2;
+  sdkws.RequestPagination Pagination = 3;
+}
+
 service friend {
   // Friend request
   rpc applyToAddFriend(applyToAddFriendReq) returns (applyToAddFriendResp);
@@ -339,4 +468,17 @@ service friend {
 
   // 获取附近好友信息 
   rpc getNearbyFriends(getNearbyFriendsReq) returns (getNearbyFriendsResp);
+
+  // Monent
+  rpc CreateOneMoment(CreateOneMomentReq) returns(CreateOneMomentResp);
+  rpc DeleteOneMoment(DeleteOneMomentReq) returns(DeleteOneMomentResp);
+  rpc LikeOneMoment(LikeOneMomentReq) returns(LikeOneMomentResp);
+  rpc CommentOneMoment(CommentOneMomentReq) returns(CommentOneMomentResp);
+  rpc DeleteComment(DeleteCommentReq) returns(DeleteCommentResp);
+  rpc GetMomentByID(GetMomentByIDReq) returns(GetMomentByIDResp);
+  /// user self
+  rpc GetUserMoments(GetUserMomentsReq) returns(GetUserMomentsResp);
+  /// users friend
+  rpc GetUserFriendMoments(GetUserFriendMomentsReq) returns(GetUserFriendMomentsResp);
+
 }
